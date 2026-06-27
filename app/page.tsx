@@ -1,22 +1,18 @@
+"use client"
+import { useState } from "react";
 
-export const metadata= {
-    title: "Home Pge",
-  description: "Welcome to my website",
-}
 
-export default async function Home() {
-  const res = await fetch(
-    "http://localhost:3000/api/user",
-    {
-      method:"POST",
-      body:JSON.stringify({
-        name :"ajshay",
-        age:34
-      })
-    }
-  );
 
-  const data = await res.json();
+export default  function Home() {
+ 
+  const [count,setCount] = useState(0);
 
-  return <div>{data.name}</div>;
+  return <>
+    <div>
+      <h1>{count}</h1>
+      <button className="w-12 h-23 bg-emerald-500" onClick={()=>setCount(cnt => cnt+1)}>+</button>
+       <button className="w-12 h-23 bg-amber-800" onClick={()=>setCount(cnt => cnt-1)}>-</button>
+    </div>
+  
+  </>;
 }
